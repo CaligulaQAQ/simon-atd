@@ -1,0 +1,19 @@
+2023-11-17 17:16:10,468 [main] INFO  c.s.w.SimonAtdApplication [] - Starting SimonAtdApplication using Java 1.8.0_281 on localhost with PID 34246 (/Users/yzy/IdeaProjects/simon-atd/simon-atd-web/target/classes started by yzy in /Users/yzy/IdeaProjects/simon-atd)
+2023-11-17 17:16:10,471 [main] INFO  c.s.w.SimonAtdApplication [] - The following 1 profile is active: "local"
+2023-11-17 17:16:11,880 [main] INFO  c.s.w.SimonAtdApplication [] - Started SimonAtdApplication in 2.018 seconds (JVM running for 2.786)
+2023-11-17 17:17:08,811 [http-nio-7001-exec-1] INFO  c.s.w.f.RequestFilter [] - request path = /elec/price,param = {}
+2023-11-17 17:18:36,428 [main] INFO  c.s.w.SimonAtdApplication [] - Starting SimonAtdApplication using Java 1.8.0_281 on localhost with PID 34298 (/Users/yzy/IdeaProjects/simon-atd/simon-atd-web/target/classes started by yzy in /Users/yzy/IdeaProjects/simon-atd)
+2023-11-17 17:18:36,430 [main] INFO  c.s.w.SimonAtdApplication [] - The following 1 profile is active: "local"
+2023-11-17 17:18:37,608 [main] INFO  c.s.w.SimonAtdApplication [] - Started SimonAtdApplication in 1.619 seconds (JVM running for 2.105)
+2023-11-17 17:18:50,051 [http-nio-7001-exec-1] INFO  c.s.w.f.RequestFilter [] - request path = /elec/price,param = {}
+2023-11-17 17:19:13,352 [main] INFO  c.s.w.SimonAtdApplication [] - Starting SimonAtdApplication using Java 1.8.0_281 on localhost with PID 34313 (/Users/yzy/IdeaProjects/simon-atd/simon-atd-web/target/classes started by yzy in /Users/yzy/IdeaProjects/simon-atd)
+2023-11-17 17:19:13,355 [main] INFO  c.s.w.SimonAtdApplication [] - The following 1 profile is active: "local"
+2023-11-17 17:19:14,643 [main] INFO  c.s.w.SimonAtdApplication [] - Started SimonAtdApplication in 1.809 seconds (JVM running for 2.47)
+2023-11-17 17:19:18,516 [http-nio-7001-exec-1] INFO  c.s.w.f.RequestFilter [] - request path = /elec/price,param = {}
+2023-11-17 17:20:34,656 [http-nio-7001-exec-3] INFO  c.s.w.f.RequestFilter [] - request path = /elec/price_diff,param = {}
+2023-11-17 17:21:41,744 [http-nio-7001-exec-5] INFO  c.s.w.f.RequestFilter [] - request path = /elec/price_detail,param = {}
+2023-11-17 17:22:03,030 [http-nio-7001-exec-6] INFO  c.s.w.f.RequestFilter [] - request path = /elec/price_detail,param = {}
+2023-11-17 17:23:20,844 [main] INFO  c.s.w.SimonAtdApplication [] - Starting SimonAtdApplication using Java 1.8.0_281 on localhost with PID 34400 (/Users/yzy/IdeaProjects/simon-atd/simon-atd-web/target/classes started by yzy in /Users/yzy/IdeaProjects/simon-atd)
+2023-11-17 17:23:20,847 [main] INFO  c.s.w.SimonAtdApplication [] - The following 1 profile is active: "local"
+2023-11-17 17:23:22,069 [main] INFO  c.s.w.SimonAtdApplication [] - Started SimonAtdApplication in 1.73 seconds (JVM running for 2.322)
+2023-11-17 17:24:10,196 [http-nio-7001-exec-1] INFO  c.s.w.f.RequestFilter [] - request path = /elec/station_list,param = {}

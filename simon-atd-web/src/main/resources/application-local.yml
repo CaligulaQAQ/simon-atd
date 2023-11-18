@@ -1,0 +1,13 @@
+server:
+  servlet:
+    encoding:
+      force: true
+      charset: UTF-8
+  port: 7001
+
+excel:
+  rootpath: /Users/yzy/Downloads/huarun/onedaydata
+
+logging:
+  level:
+    root: info

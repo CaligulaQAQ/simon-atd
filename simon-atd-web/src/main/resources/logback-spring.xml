@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <springProperty scope="context" name="LOGGING.FILE" source="log.file"/>
+    <springProperty scope="context" name="LOGGING.LEVEL.ROOT" source="log.level.root"/>
+
+    <appender name="stderrAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <File>logs/ol-error.log</File>
+        <Append>true</Append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>logs/ol-error.log-%d{yyyy-MM-dd}.%i</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>2GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <!--<Pattern>[%d{yyyy-MM-dd HH:mm:ss} %-5p] [%t] %X{username} %X{queryUrl} [%C:%L]-%m%n</Pattern>-->
+            <pattern>%d [%thread] %-5level %logger{6} [%X{traceId}] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="rootAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/ol.log</File>
+        <Append>true</Append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>logs/ol.log-%d{yyyy-MM-dd}.%i</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>2GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d [%thread] %-5level %logger{6} [%X{traceId}] - %msg%n</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d [%thread] %-5level %logger{6} [%X{traceId}] - %msg%n</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <logger name="org.springframework" level="ERROR"/>
+    <logger name="org.hibernate" level="WARN"/>
+    <logger name="org.apache" level="WARN"/>
+
+    <root level="${LOGGING.LEVEL.ROOT}">
+        <appender-ref ref="rootAppender"/>
+        <appender-ref ref="stderrAppender"/>
+    </root>
+</configuration>
