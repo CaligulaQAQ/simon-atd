@@ -13,6 +13,7 @@ import com.simon.common.model.search.PageResult;
 import com.simon.common.result.Result;
 import com.simon.service.price.SpotElecFcstService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,25 +32,25 @@ public class SpotElecFcstController {
     private SpotElecFcstService spotElecFcstService;
 
     @PostMapping("price")
-    public Result getPriceCurve(@RequestBody BaseDTO baseDTO) throws IOException {
+    public Result getPriceCurve(@Validated @RequestBody BaseDTO baseDTO) throws IOException {
         List<PriceVO> priceCurve = spotElecFcstService.getPriceCurve(baseDTO);
         return Result.success(priceCurve);
     }
 
     @PostMapping("price_diff")
-    public Result getPriceDiffCurve(@RequestBody BaseDTO baseDTO) throws IOException {
+    public Result getPriceDiffCurve(@Validated @RequestBody BaseDTO baseDTO) throws IOException {
         List<PriceDiffVO> priceDiffCurve = spotElecFcstService.getPriceDiffCurve(baseDTO);
         return Result.success(priceDiffCurve);
     }
 
     @PostMapping("price_detail")
-    public Result getPriceDetail(@RequestBody BaseDTO baseDTO) throws IOException {
+    public Result getPriceDetail(@Validated @RequestBody BaseDTO baseDTO) throws IOException {
         PageResult<PriceDetailVO> priceDetail = spotElecFcstService.getPriceDetail(baseDTO);
         return Result.success(priceDetail);
     }
 
     @PostMapping("price_download")
-    public void downloadPriceDetail(HttpServletResponse response, @RequestBody BaseDTO baseDTO) throws IOException {
+    public void downloadPriceDetail(HttpServletResponse response, @Validated @RequestBody BaseDTO baseDTO) throws IOException {
         spotElecFcstService.downloadPriceDetail(response, baseDTO);
     }
 

@@ -1,6 +1,7 @@
 package com.simon.web.interceptor;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -9,6 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.simon.common.result.Result;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -40,13 +45,30 @@ public class WebExceptionInterceptor {
         result.setMessage(message);
 
         String requestBaseMsg = String.format("productionMode = [false], method = [%s], uri = [%s]",
-            request.getMethod(), request.getRequestURI());
+                request.getMethod(), request.getRequestURI());
         log.error(requestBaseMsg, exception);
+        return result;
+    }
 
-        // Returns error stack trace on devMode
-        String collect = Arrays.asList(exception.getStackTrace())
-            .stream().map(Objects::toString).collect(Collectors.joining("\n"));
-        result.setErrors(requestBaseMsg + "\n" + collect);
+
+    @ResponseBody
+    @ExceptionHandler(value = MethodArgumentNotValidException.class)
+    public Result handleValidException(HttpServletRequest request, MethodArgumentNotValidException e) {
+        BindingResult bindingResult = e.getBindingResult();
+        String message = null;
+        if (bindingResult.hasErrors()) {
+            List<ObjectError> allErrors = bindingResult.getAllErrors();
+            message = allErrors.stream().map(DefaultMessageSourceResolvable::getDefaultMessage)
+                    .collect(Collectors.joining(","));
+        }
+        String requestBaseMsg = String.format("productionMode = [false], method = [%s], uri = [%s]",
+                request.getMethod(), request.getRequestURI());
+        log.error(requestBaseMsg, e);
+        Result result = new Result();
+        result.setCode(-1);
+        result.setSuccess(false);
+        result.setData(null);
+        result.setMessage(message);
         return result;
     }
 }

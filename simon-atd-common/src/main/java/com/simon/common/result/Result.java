@@ -23,7 +23,6 @@ public class Result implements Serializable {
 
     private Integer code;
     private String  message;
-    private String  errors;
     private String  requestId;
     private Object  data;
     private Boolean success;
@@ -44,14 +43,12 @@ public class Result implements Serializable {
         Integer code,
         Object data,
         String message,
-        String errors,
         String requestId) {
         Result result = new Result();
         result.success = success;
         result.code = code;
         result.data = data;
         result.message = message;
-        result.errors = errors;
         result.requestId = requestId;
         return result;
     }
